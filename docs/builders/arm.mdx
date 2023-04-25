@@ -197,8 +197,7 @@ shared images the resulting name will point to the actual source used to create 
 
 Usage example:
 
-<Tabs>
-<Tab heading="HCL2">
+### HCL2
 
 ```hcl
 // When accessing one of these variables from inside the builder, you need to
@@ -223,8 +222,7 @@ post-processor "manifest" {
     }
 }
 ```
-</Tab>
-<Tab heading="JSON">
+### JSON
 
 ```json
 "post-processors": [
@@ -239,8 +237,6 @@ post-processor "manifest" {
 ]
 ```
 
-</Tab>
-</Tabs>
 
 ### Communicator Config
 
@@ -256,8 +252,7 @@ In addition to the builder options, a communicator may also be defined:
 
 Here is a basic example for Azure.
 
-<Tabs>
-<Tab heading="HCL2">
+### HCL2
 
 ```hcl
 source "azure-arm" "basic-example" {
@@ -289,8 +284,7 @@ build {
 }
 ```
 
-</Tab>
-<Tab heading="JSON">
+### JSON
 
 ```json
 {
@@ -320,8 +314,6 @@ build {
 }
 ```
 
-</Tab>
-</Tabs>
 
 ## Deprovision
 
@@ -342,8 +334,7 @@ after that. The possible states, in case you want to wait for another state,
 [are documented
 here](https://technet.microsoft.com/en-us/library/hh824815.aspx)
 
-<Tabs>
-<Tab heading="JSON">
+#### JSON
 
 ```json
 {
@@ -364,8 +355,7 @@ here](https://technet.microsoft.com/en-us/library/hh824815.aspx)
 }
 ```
 
-</Tab>
-<Tab heading="HCL2">
+#### HCL2
 
 ```hcl
 provisioner "powershell" {
@@ -381,8 +371,6 @@ provisioner "powershell" {
 }
 ```
 
-</Tab>
-</Tabs>
 
 The Windows Guest Agent participates in the Sysprep process. The agent must be
 fully installed before the VM can be sysprep'ed. To ensure this is true all
@@ -401,8 +389,7 @@ correctly -- for example, if it is waiting for a reboot that you never perform.
 The following provisioner snippet shows how to deprovision a Linux VM.
 Deprovision should be the last operation executed by a build.
 
-<Tabs>
-<Tab heading="JSON">
+#### JSON
 
 ```json
 {
@@ -419,8 +406,7 @@ Deprovision should be the last operation executed by a build.
 }
 ```
 
-</Tab>
-<Tab heading="HCL2">
+#### HCL2
 
 ```hcl
 provisioner "shell" {
@@ -432,8 +418,6 @@ provisioner "shell" {
 }
 ```
 
-</Tab>
-</Tabs>
 
 To learn more about the Linux deprovision process please see WALinuxAgent's
 [README](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
