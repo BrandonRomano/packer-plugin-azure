@@ -6,22 +6,22 @@ integration {
   identifier = "packer/BrandonRomano/azure"
   component {
     type = "builder"
-    name = "Azure chroot"
+    name = "chroot"
     slug = "chroot"
   }
   component {
     type = "builder"
-    name = "Azure arm"
+    name = "ARM"
     slug = "arm"
   }
   component {
     type = "builder"
-    name = "Azure DevTest Lab"
+    name = "DTL"
     slug = "dtl"
   }
   component {
     type = "provisioner"
-    name = "Azure DevTest Lab"
+    name = "DTL Artifact"
     slug = "dtlartifact"
   }
 }
