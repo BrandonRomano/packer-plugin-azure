@@ -4,6 +4,7 @@ integration {
   name = "Azure"
   description = "Packer can create Azure virtual machine images through variety of ways depending on the strategy that you want to use for building the images."
   identifier = "packer/BrandonRomano/azure"
+  flags = ["hcp-ready"]
   component {
     type = "builder"
     name = "chroot"
