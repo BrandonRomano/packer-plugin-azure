@@ -306,7 +306,7 @@ shared images the resulting name will point to the actual source used to create 
 
 Usage example:
 
-### HCL2
+**HCL2**
 
 ```hcl
 // When accessing one of these variables from inside the builder, you need to
@@ -328,7 +328,7 @@ post-processor "manifest" {
     }
 }
 ```
-### JSON
+**JSON**
 
 ```json
 "post-processors": [
@@ -363,7 +363,7 @@ on its own resource group, the following config can be used to create an
 updated Debian image:
 
 
-#### HCL2
+**HCL2**
 
 ```hcl
 source "azure-chroot" "example" {
@@ -382,7 +382,7 @@ build {
 ```
 
 
-#### JSON
+**JSON**
 
 ```json
 {
@@ -415,7 +415,7 @@ to update your VM.
 Set the `ARM_IMAGE_RESOURCEGROUP_ID` variable to an existing resource group in the
 subscription where the resulting image will be created.
 
-#### HCL2
+**HCL2**
 
 ```hcl
 variable "client_id" {
@@ -450,7 +450,7 @@ build {
 }
 ```
 
-#### JSON
+**JSON**
 
 ```json
 {

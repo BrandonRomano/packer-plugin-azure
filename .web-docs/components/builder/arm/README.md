@@ -669,7 +669,7 @@ shared images the resulting name will point to the actual source used to create 
 
 Usage example:
 
-### HCL2
+**HCL2**
 
 ```hcl
 // When accessing one of these variables from inside the builder, you need to
@@ -694,7 +694,7 @@ post-processor "manifest" {
     }
 }
 ```
-### JSON
+**JSON**
 
 ```json
 "post-processors": [
@@ -859,7 +859,7 @@ In addition to the builder options, a communicator may also be defined:
 
 Here is a basic example for Azure.
 
-### HCL2
+**HCL2**
 
 ```hcl
 source "azure-arm" "basic-example" {
@@ -891,7 +891,7 @@ build {
 }
 ```
 
-### JSON
+**JSON**
 
 ```json
 {
@@ -941,7 +941,7 @@ after that. The possible states, in case you want to wait for another state,
 [are documented
 here](https://technet.microsoft.com/en-us/library/hh824815.aspx)
 
-#### JSON
+**JSON**
 
 ```json
 {
@@ -962,7 +962,7 @@ here](https://technet.microsoft.com/en-us/library/hh824815.aspx)
 }
 ```
 
-#### HCL2
+**HCL2**
 
 ```hcl
 provisioner "powershell" {
@@ -996,7 +996,7 @@ correctly -- for example, if it is waiting for a reboot that you never perform.
 The following provisioner snippet shows how to deprovision a Linux VM.
 Deprovision should be the last operation executed by a build.
 
-#### JSON
+**JSON**
 
 ```json
 {
@@ -1013,7 +1013,7 @@ Deprovision should be the last operation executed by a build.
 }
 ```
 
-#### HCL2
+**HCL2**
 
 ```hcl
 provisioner "shell" {
