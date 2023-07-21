@@ -7,13 +7,13 @@ integration {
   flags = ["hcp-ready"]
   component {
     type = "builder"
-    name = "chroot"
-    slug = "chroot"
+    name = "ARM"
+    slug = "arm"
   }
   component {
     type = "builder"
-    name = "ARM"
-    slug = "arm"
+    name = "chroot"
+    slug = "chroot"
   }
   component {
     type = "builder"
