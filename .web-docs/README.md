@@ -1,6 +1,21 @@
 The Azure plugin can be used with HashiCorp Packer to create custom images on Azure.
 To do so, the plugin exposes multiple builders, among which you can choose the one most adapted to your workflow.
 
+## Installation
+
+Packer v1.7.0 and later
+
+```hcl
+packer {
+  required_plugins {
+    azure = {
+      source  = "github.com/hashicorp/azure"
+      version = "~> 1"
+    }
+  }
+}
+```
+
 ## Components
 
 Packer can create Azure virtual machine images through variety of ways depending on the strategy that you want to use for building the images.
