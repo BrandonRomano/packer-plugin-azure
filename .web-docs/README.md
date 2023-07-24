@@ -3,7 +3,8 @@ To do so, the plugin exposes multiple builders, among which you can choose the o
 
 ## Installation
 
-Packer v1.7.0 and later
+To install this plugin, copy and paste this code into your Packer configuration .
+Then, run [`packer init`](https://www.packer.io/docs/commands/init).
 
 ```hcl
 packer {
@@ -14,6 +15,12 @@ packer {
     }
   }
 }
+```
+
+Alternatively, you can use `packer plugins install` to manage installation of this plugin.
+
+```sh
+$ packer plugins install github.com/hashicorp/azure
 ```
 
 ## Components
