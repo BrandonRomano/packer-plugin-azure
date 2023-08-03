@@ -28,15 +28,15 @@ Packer can create Azure virtual machine images through variety of ways depending
 
 ### Builders
 
-- [azure-arm](builders/arm.mdx) - The Azure ARM builder supports building Virtual Hard Disks (VHDs) and
+- [azure-arm](/packer/integrations/hashicorp/azure/latest/components/builder/arm) - The Azure ARM builder supports building Virtual Hard Disks (VHDs) and
   Managed Images in Azure Resource Manager.
-- [azure-chroot](builders/chroot.mdx) - The Azure chroot builder supports building a managed disk image without
+- [azure-chroot](/packer/integrations/hashicorp/azure/latest/components/builder/chroot) - The Azure chroot builder supports building a managed disk image without
   launching a new Azure VM for every build, but instead use an already-running Azure VM.
-- [azure-dtl](builders/dtl.mdx) - The Azure DevTest Labs builder builds custom images and uploads them to DevTest Lab image repository automatically.
+- [azure-dtl](/packer/integrations/hashicorp/azure/latest/components/builder/dtl) - The Azure DevTest Labs builder builds custom images and uploads them to DevTest Lab image repository automatically.
 
 ### Provisioners
 
-- [azure-dtlartifact](provisioners/dtlartifact.mdx) - The Azure DevTest Labs provisioner can be used to apply an artifact to a VM - See [Add an artifact to a VM](https://docs.microsoft.com/en-us/azure/devtest-labs/add-artifact-vm)
+- [azure-dtlartifact](/packer/integrations/hashicorp/azure/latest/components/provisioner/dtlartifact) - The Azure DevTest Labs provisioner can be used to apply an artifact to a VM - Refer to [Add an artifact to a VM](https://docs.microsoft.com/en-us/azure/devtest-labs/add-artifact-vm)
 
 ## Authentication
 
