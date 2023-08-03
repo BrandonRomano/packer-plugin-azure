@@ -522,6 +522,9 @@ Providing `temp_resource_group_name` or `location` in combination with
 
 - `secure_boot_enabled` (bool) - Specifies if Secure Boot and Trusted Launch is enabled for the Virtual Machine.
 
+- `encryption_at_host` (bool) - Specifies if Encryption at host is enabled for the Virtual Machine.
+  Requires enabling encryption at host in the Subscription read more [here](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell)
+
 - `vtpm_enabled` (bool) - Specifies if vTPM (virtual Trusted Platform Module) and Trusted Launch is enabled for the Virtual Machine.
 
 - `async_resourcegroup_delete` (bool) - If you want packer to delete the
@@ -638,6 +641,8 @@ The shared_image_gallery_destination block is available for publishing a new ima
 
 - `storage_account_type` (string) - Specify a storage account type for the Shared Image Gallery Image Version.
   Defaults to `Standard_LRS`. Accepted values are `Standard_LRS`, `Standard_ZRS` and `Premium_LRS`
+
+- `specialized` (bool) - Set to true if publishing to a Specialized Gallery, this skips a call to set the build VM's OS state as Generalized
 
 <!-- End of code generated from the comments of the SharedImageGalleryDestination struct in builder/azure/arm/config.go; -->
 
@@ -949,10 +954,8 @@ here](https://technet.microsoft.com/en-us/library/hh824815.aspx)
     {
       "type": "powershell",
       "inline": [
-        " # NOTE: the following *3* lines are only needed if the you have installed the Guest Agent.",
-        "  while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
-        "  while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
-        "  while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
+        "# If Guest Agent services are installed, make sure that they have started.",
+        "foreach ($service in Get-Service -Name RdAgent, WindowsAzureTelemetryService, WindowsAzureGuestAgent -ErrorAction SilentlyContinue) { while ((Get-Service $service.Name).Status -ne 'Running') { Start-Sleep -s 5 } }",
 
         "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit /mode:vm",
         "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
@@ -967,10 +970,8 @@ here](https://technet.microsoft.com/en-us/library/hh824815.aspx)
 ```hcl
 provisioner "powershell" {
    inline = [
-        " # NOTE: the following *3* lines are only needed if the you have installed the Guest Agent.",
-        "  while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
-        "  while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
-        "  while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
+        "# If Guest Agent services are installed, make sure that they have started.",
+        "foreach ($service in Get-Service -Name RdAgent, WindowsAzureTelemetryService, WindowsAzureGuestAgent -ErrorAction SilentlyContinue) { while ((Get-Service $service.Name).Status -ne 'Running') { Start-Sleep -s 5 } }",
 
         "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit /mode:vm",
         "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
